@@ -1,14 +1,7 @@
-"""Генератор случайных токенов.
-
-Использует модуль secrets, который создан для безопасной генерации
-паролей и ключей (в отличие от обычного модуля random).
-"""
-
 import secrets
 import string
 from pathlib import Path
 
-# ---------- Наборы символов ----------
 
 LETTERS_DIGITS = string.ascii_letters + string.digits
 HEX = "0123456789abcdef"
@@ -16,8 +9,7 @@ URL_SAFE = LETTERS_DIGITS + "-_"
 SYMBOLS = "!@#$%^&*()-_=+?"
 STRONG = LETTERS_DIGITS + SYMBOLS
 
-# Номер пункта -> (название, набор символов, нужны ли символы всех видов)
-TYPES = {
+
     "1": ("Буквы и цифры", LETTERS_DIGITS, False),
     "2": ("Hex (цифры 0-9 и буквы a-f)", HEX, False),
     "3": ("URL-safe (буквы, цифры, - и _)", URL_SAFE, False),
@@ -37,7 +29,6 @@ MENU = """
 SAVE_FILE = "tokens.txt"
 
 
-# ---------- Функции ----------
 
 def is_strong(token: str) -> bool:
     """Проверяет, что в токене есть строчная, заглавная буква, цифра и символ."""
